@@ -1,10 +1,95 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>Регистрация</h1>
-<form>
-    <input type="text" placeholder="Логин"><br><br>
-    <input type="email" placeholder="Email"><br><br>
-    <input type="password" placeholder="Пароль"><br><br>
-    <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
-</form>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h1 class="text-center">Регистрация</h1>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form.non_field_errors }}
+<div class="form-group">
+                            <label for="id_name">Имя: <span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                </div>
+                                {{ form.name }}
+                                {{ form.name.errors }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="id_surname">Фамилия: <span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                </div>
+                                {{ form.surname }}
+                                {{ form.surname.errors }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="id_patronymic">Отчество:</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                </div>
+                                {{ form.patronymic }}
+                                {{ form.patronymic.errors }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="id_login">Логин: <span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                </div>
+                                {{ form.login }}
+                                {{ form.login.errors }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="id_email">Email: <span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                </div>
+                                {{ form.email }}
+                                {{ form.email.errors }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="id_password">Пароль: <span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                </div>
+                                {{ form.password }}
+                                {{ form.password.errors }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="id_password_repeat">Повторите пароль: <span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                </div>
+                                {{ form.password_repeat }}
+                                {{ form.password_repeat.errors }}
+                            </div>
+                        </div>
+                        <div class="form-group form-check">
+                            {{ form.rules }}
+                            <label for="id_rules" class="form-check-label">Согласен с правилами регистрации <span class="text-danger">*</span></label>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Зарегистрироваться</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
