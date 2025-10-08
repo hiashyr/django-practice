@@ -22,20 +22,21 @@ body {
 .logo {
     display: flex;
     align-items: center;
-    text-decoration: none;
     color: var(--main-light);
     font-weight: bold;
+    text-decoration: none;
 }
 .site-title {
     font-size: 1.5em;
     font-weight: bold;
     margin-left: 10px;
     color: var(--main-light);
+    text-decoration: none;
 }
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 20px;
+    gap: 40px;
     margin: 0;
     padding: 0;
 }
@@ -46,7 +47,8 @@ body {
     transition: color 0.2s;
 }
 .nav-links a:hover {
-    color: var(--main-green);
+    color: var(--main-dark);
+    text-decoration: none;
 }
 .auth-buttons {
     display: flex;
@@ -56,8 +58,8 @@ body {
     padding: 6px 16px;
     border: none;
     border-radius: 4px;
-    background: var(--main-green);
-    color: var(--main-light);
+    background: var(--main-dark) !important;
+    color: var(--main-light) !important;
     text-decoration: none;
     font-size: 1em;
     transition: background 0.2s, color 0.2s;
@@ -67,9 +69,9 @@ body {
     color: var(--main-light);
 }
 .btn-primary {
-    background: var(--main-light);
-    color: var(--main-dark);
-    border: 1px solid var(--main-green);
+    background: var(--main-light) !important;
+    color: var(--main-dark) !important;
+    border: 1px solid var(--main-green) !important;
 }
 .btn-primary:hover {
     background: var(--main-green);
@@ -77,4 +79,38 @@ body {
 }
 .content {
     padding: 40px;
+}
+
+/* Стили для кнопки регистрации */
+.btn-primary {
+    background: var(--main-green);
+    color: var(--main-light);
+    border: none;
+    transition: background 0.2s, color 0.2s;
+}
+
+.btn-primary:hover {
+    background: var(--main-dark);
+    color: var(--main-light);
+}
+
+/* Стили для элементов слайдера */
+.carousel-indicators li {
+    background-color: var(--main-green);
+}
+
+.carousel-indicators .active {
+    background-color: var(--main-light);
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: var(--main-green);
+    filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+.carousel-control-prev-icon:hover,
+.carousel-control-next-icon:hover {
+    background-color: var(--main-green);
+    filter: invert(1) grayscale(100%) brightness(150%);
 }

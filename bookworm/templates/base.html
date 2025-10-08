@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <title>Bookworm</title>
     <link rel="stylesheet" href="/static/style.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <!-- jQuery and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
     <nav class="navbar">
@@ -12,13 +20,13 @@
             <span class="site-title">Bookworm</span>
         </a>
         <ul class="nav-links">
-            <li><a href="/">Главная</a></li>
-            <li><a href="/about/">О нас</a></li>
-            <li><a href="/contact/">Контакты</a></li>
+            <li><a href="/"><i class="fas fa-home"></i> Главная</a></li>
+            <li><a href="/about/"><i class="fas fa-info-circle"></i> О нас</a></li>
+            <li><a href="/contact/"><i class="fas fa-envelope"></i> Контакты</a></li>
         </ul>
         <div class="auth-buttons">
-            <a href="/login/" class="btn">Войти</a>
-            <a href="/register/" class="btn btn-primary">Регистрация</a>
+            <a href="/login/" class="btn"><i class="fas fa-sign-in-alt"></i> Войти</a>
+            <a href="/register/" class="btn btn-primary"><i class="fas fa-user-plus"></i> Регистрация</a>
         </div>
     </nav>
     <div class="content">
