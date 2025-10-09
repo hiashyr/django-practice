@@ -4,12 +4,36 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm
 from .forms import RegistrationForm
 from django.contrib import messages
+from .models import Book, Genre
 
 def home(request):
 	return render(request, 'home.html', {'user': request.user})
 
 def catalog(request):
-	return render(request, 'catalog.html')
+    books = Book.objects.all().order_by('-created_at')
+    genres = Genre.objects.all()
+
+    # Sorting
+    sort_by = request.GET.get('sort_by', 'newest')
+    if sort_by == 'year':
+        books = books.order_by('year')
+    elif sort_by == 'title':
+        books = books.order_by('title')
+    elif sort_by == 'price':
+        books = books.order_by('price')
+
+    # Filtering by genre
+    genre_id = request.GET.get('genre')
+    if genre_id:
+        books = books.filter(genre_id=genre_id)
+
+    context = {
+        'books': books,
+        'genres': genres,
+        'sort_by': sort_by,
+        'selected_genre': genre_id
+    }
+    return render(request, 'catalog.html', context)
 
 def contact(request):
 	return render(request, 'contact.html')
@@ -58,3 +82,7 @@ def logout_view(request):
     logout(request)
     messages.success(request, 'Вы успешно вышли из системы.')
     return redirect('home')
+
+def book_detail(request, book_id):
+    book = Book.objects.get(id=book_id)
+    return render(request, 'book_detail.html', {'book': book})

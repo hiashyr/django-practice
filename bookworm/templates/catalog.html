@@ -2,6 +2,57 @@
 {% block content %}
 <div class="container">
     <h1>Каталог</h1>
-    <p>Здесь будет отображаться каталог книг.</p>
+
+    <!-- Sorting and Filtering -->
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <form method="get" action="{% url 'catalog' %}">
+                <div class="input-group">
+                    <select name="sort_by" class="form-control">
+                        <option value="newest" {% if sort_by == 'newest' %}selected{% endif %}>Новинки</option>
+                        <option value="year" {% if sort_by == 'year' %}selected{% endif %}>Год издания</option>
+                        <option value="title" {% if sort_by == 'title' %}selected{% endif %}>Название</option>
+                        <option value="price" {% if sort_by == 'price' %}selected{% endif %}>Цена</option>
+                    </select>
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-primary">Сортировать</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <form method="get" action="{% url 'catalog' %}">
+                <div class="input-group">
+                    <select name="genre" class="form-control">
+                        <option value="">Все жанры</option>
+                        {% for genre in genres %}
+                            <option value="{{ genre.id }}" {% if selected_genre|stringformat:"s" == genre.id|stringformat:"s" %}selected{% endif %}>{{ genre.name }}</option>
+                        {% endfor %}
+                    </select>
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-secondary">Фильтровать</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Book List -->
+    <div class="row">
+        {% for book in books %}
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="{{ book.image.url }}" class="card-img-top" alt="{{ book.title }}" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ book.title }}</h5>
+                        <p class="card-text">Автор: {{ book.author }}</p>
+                        <p class="card-text">Год выпуска: {{ book.year }}</p>
+                        <p class="card-text">Цена: {{ book.price }} руб.</p>
+                        <a href="{% url 'book_detail' book.id %}" class="btn btn-primary">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}
