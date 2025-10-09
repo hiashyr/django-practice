@@ -6,7 +6,7 @@ from .forms import RegistrationForm
 from django.contrib import messages
 
 def home(request):
-	return render(request, 'home.html')
+	return render(request, 'home.html', {'user': request.user})
 
 def catalog(request):
 	return render(request, 'catalog.html')
@@ -53,3 +53,8 @@ def register(request):
     else:
         form = RegistrationForm()
     return render(request, 'register.html', {'form': form})
+
+def logout_view(request):
+    logout(request)
+    messages.success(request, 'Вы успешно вышли из системы.')
+    return redirect('home')
